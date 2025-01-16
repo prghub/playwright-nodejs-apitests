@@ -1,0 +1,33 @@
+@startuml
+actor "Test Script" as TestScript
+participant "WebDriver (Browser)" as WebDriver
+participant "Web Page" as WebPage
+
+TestScript -> WebDriver: Open "http://example.com"
+WebDriver -> WebPage: Load page content
+WebPage --> WebDriver: Return page content
+WebDriver --> TestScript: Page loaded
+
+TestScript -> WebDriver: Find text input element
+WebDriver -> WebPage: Find element (input field)
+WebPage --> WebDriver: Return input element
+TestScript -> WebDriver: SendKeys("Hello")
+WebDriver -> WebPage: Input "Hello" into text field
+WebPage --> WebDriver: Update input field
+
+TestScript -> WebDriver: Find button element
+WebDriver -> WebPage: Find element (button)
+WebPage --> WebDriver: Return button element
+TestScript -> WebDriver: Click button
+WebDriver -> WebPage: Click button
+WebPage --> WebDriver: Update page (show result)
+
+TestScript -> WebDriver: Find result element
+WebDriver -> WebPage: Find element (result)
+WebPage --> WebDriver: Return result element
+TestScript -> WebDriver: Assert element is visible
+WebDriver -> WebPage: Check visibility of element
+WebPage --> WebDriver: Return visibility status
+TestScript --> WebDriver: Assertion passed
+
+@enduml
